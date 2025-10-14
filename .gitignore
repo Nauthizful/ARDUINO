@@ -1,2 +1,4 @@
 main.ino
 test_servo/test_servo.ino
+.vscode/c_cpp_properties.json
+.vscode/settings.json

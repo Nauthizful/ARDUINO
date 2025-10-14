@@ -13,20 +13,25 @@
 #define ANALOG_X_DEADZONE_MAX 96
 #define ANALOG_X_DEADZONE_MIN 85
 
+//Déclaration des valeurs pour l'axe Y du joystick
 #define MOTEUR_Y_MIN 0
 #define MOTEUR_Y_MAX 180
 
+//Déclaration des variables qui liront les entrées analaogiques
 long joystick_x;
 long joystick_y;
 
+//Déclaration des servos
 Servo continu;
 Servo moteur;
 
 void setup()
 {
+  //Initialisation des entrées
   pinMode(JOYSTICK_X, INPUT_PULLUP);
   pinMode(JOYSTICK_Y, INPUT_PULLUP);
 
+  //Permet de choisir les pins qui sont utilisés comme sortie pour les servos
   continu.attach(SERVO_CONTINU_PIN);
   moteur.attach(SERVO_MOTEUR_PIN);
 }
@@ -51,6 +56,7 @@ Args:
 *********************************************************/
 int deadZone(int x) 
 {
+  // Si la valeur lue est dans la zone morte, on la remplace par la valeur où le moteur ne bouge pas
   if(x >= ANALOG_X_DEADZONE_MIN && x <= ANALOG_X_DEADZONE_MAX)
   {
     x = ANALOG_X_CENTER;
@@ -64,7 +70,8 @@ Si le joystick est dans un sens, on tourne le
 moteur au maximum dans une direction, sinon dans l'autre.
 *********************************************************/
 int moteurY(){
-  // 
+  // 800 et 200 sont des valeurs choisis arbitrairement et correpondent à la motié de la course du joystick
+  // Si le joystick est au milieu, le moteur reste en place
   if(analogRead(JOYSTICK_Y) > 800){
     return MOTEUR_Y_MAX;
   }
