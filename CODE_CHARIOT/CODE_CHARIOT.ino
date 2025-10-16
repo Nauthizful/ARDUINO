@@ -14,8 +14,8 @@
 #define ANALOG_X_DEADZONE_MIN 85
 
 //Déclaration des valeurs pour l'axe Y du joystick
-#define MOTEUR_Y_MIN 0
-#define MOTEUR_Y_MAX 45
+#define MOTEUR_Y_MIN 90
+#define MOTEUR_Y_MAX 180
 
 //Déclaration des variables qui liront les entrées analaogiques
 long joystick_x;
